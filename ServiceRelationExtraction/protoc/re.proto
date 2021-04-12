@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package re;
+
+message reRequest{
+    string sentence = 1;
+}
+
+message reResponse{
+  message triple {
+    string subject= 1;
+    string predicate = 2;
+    string object = 3;
+  }
+  repeated triple results=1;
+}
+
+service API {
+    rpc re(reRequest) returns(reResponse);
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./pb;pb";
+
+message relationExtractRequest{
+  string sentence = 1;
+}
+
+message relationExtractResponse{
+  message triple{
+    string sub = 1;
+    string  pred = 2;
+    string  obj = 3;
+  }
+  repeated triple triples = 1;
+}
+
+service relationExtractService{
+  rpc ExtractTriple(relationExtractRequest) returns (relationExtractResponse){};
+}
